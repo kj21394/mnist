@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from kerascnn import cnnmodel 
+import random
 
 
 (train, train_label), (test, test_label) = tf.keras.datasets.mnist.load_data()
@@ -22,6 +23,9 @@ history = model.fit_generator(train_img_batch, epochs = 2)
 score = model.evaluate(test_img, test_label)
 print (score)
 
-a = model.predict(test_img[:image_index])
-plt.imshow(test_img[image_index], cmap='Greys')
+preds = model.predict_classes(test_img)
+img_idx = random.randint(1,len(preds))
+pred = np.argmax(preds[img_idx])
+print ('Prediction',pred)
+plt.imshow(test_img[img_idx].reshape(28,28), cmap='Greys')
 plt.show()
