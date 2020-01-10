@@ -25,6 +25,7 @@ history = model.fit_generator(train_img_batch, epochs = 2)
 score = model.evaluate(test_img, test_label)
 print (score)
 cnn_cam_mnist(model)
+
 # img_idx = random.randint(1,len(test_img))
 # print (img_idx)
 # img = np.expand_dims(test_img[img_idx], axis=0)
